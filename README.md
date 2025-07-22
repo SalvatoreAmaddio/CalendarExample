@@ -8,8 +8,11 @@ This WPF project demonstrates how to use the [`CalendarControl`](https://www.nug
 ### Month View:
 ![Calendar UI Screenshot](Screenshots/monthView.png)
 
-### Week View:
+### toggle for Week View:
 ![Calendar UI Screenshot](Screenshots/weekView.PNG)
+
+### Click on slots to add/edit events:
+![Calendar UI Screenshot](Screenshots/addEvent.PNG)
 
 ---
 
