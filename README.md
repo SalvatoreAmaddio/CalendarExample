@@ -33,5 +33,11 @@ This WPF project demonstrates how to use the [`CalendarControl`](https://www.nug
 ## 📦 NuGet Packages Used
 
 ```bash
-dotnet add package CalendarControl
+dotnet add package CalendarControl --version 1.0.3
 dotnet add package MaterialDesignThemes
+```
+
+or copy and paste
+```
+<PackageReference Include="CalendarControl" Version="1.0.3" />
+```
