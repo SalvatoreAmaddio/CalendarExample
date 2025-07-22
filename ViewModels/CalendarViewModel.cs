@@ -121,7 +121,7 @@ public class CalendarViewModel : AbstractViewModel
     {
         if (datable is EventModel model)
         {
-            await DatabaseManager.UpdateEventAsync(model);
+            await DatabaseManager.UpdateEventAsync(model); //update in the database
         }
     }
 
