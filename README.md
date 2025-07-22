@@ -52,7 +52,7 @@ or copy and paste
 Import the namespace:
 
 ```xaml
-        xmlns:calendar="clr-namespace:CalendarControl;assembly=CalendarControl"
+    xmlns:calendar="clr-namespace:CalendarControl;assembly=CalendarControl"
 ```
 
 And then:
