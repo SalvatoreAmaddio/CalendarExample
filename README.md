@@ -6,7 +6,7 @@ This WPF project demonstrates how to use the [`CalendarControl`](https://www.nug
 
 ## 📸 Preview
 
-![Calendar UI Screenshot](./monthView.png)
+![Calendar UI Screenshot](./screenshot/monthView.png)
 
 ---
 
