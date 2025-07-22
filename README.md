@@ -47,3 +47,31 @@ or copy and paste
 ```
 <PackageReference Include="CalendarControl" Version="1.0.3" />
 ```
+
+## How To Use:
+Import the namespace:
+
+```xaml
+        xmlns:calendar="clr-namespace:CalendarControl;assembly=CalendarControl"
+```
+
+And then:
+
+```xaml
+    <Grid>
+        <calendar:Calendar x:Name="calendar" 
+                           Date="{Binding Date, Mode=TwoWay}"
+                           Events="{Binding Events, Mode=TwoWay}"
+                           IsWeekView="{Binding IsWeekView, Mode=TwoWay}"
+                           Culture="{x:Static local:Cultures.US}"
+                           DeleteCommand="{Binding DeleteCommand}"
+                           SelectedEventCommand="{Binding SelectedEventCommand}"
+                           AddEventCommand="{Binding AddEventCommand}"
+                           EventDropCommand="{Binding EventDropCommand}"
+                           IsLoading="{Binding IsLoading}"
+                           />
+    </Grid>
+```
+
+Example of ViewModel can be found in the [`ViewModels`](https://github.com/SalvatoreAmaddio/CalendarExample/tree/master/ViewModels) 
+folder.
