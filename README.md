@@ -9,7 +9,7 @@ This WPF project demonstrates how to use the [`CalendarControl`](https://www.nug
 ![Calendar UI Screenshot](Screenshots/monthView.png)
 
 ### Week View:
-![Calendar UI Screenshot](Screenshots/weekView.png)
+![Calendar UI Screenshot](Screenshots/weekView.PNG)
 
 ---
 
