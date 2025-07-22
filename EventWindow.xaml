@@ -1,0 +1,71 @@
+﻿<Window x:Class="CalendarExample.EventWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalendarExample"
+        xmlns:converters="clr-namespace:CalendarExample.Converters"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:vm="clr-namespace:CalendarExample.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=vm:EventViewModel}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Style="{StaticResource MaterialDesignWindow}"
+        MinWidth="250"
+        Title="EventWindow" SizeToContent="WidthAndHeight">
+
+    <Window.Resources>
+        <converters:TimeSpanToStringConverter x:Key="TimeSpanConverter"/>
+
+        <Style TargetType="Separator">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+    </Window.Resources>
+    
+    <Border Padding="10">
+        <StackPanel>
+            <TextBox Text="{Binding Record.Title}"
+                 materialDesign:HintAssist.Hint="Title..." 
+                 materialDesign:HintAssist.HelperText="Title *"/>
+
+            <Separator Height="15"/>
+
+            <DatePicker materialDesign:HintAssist.HelperText="Date *"
+                        DisplayDate="{Binding Record.DateOf}" 
+                        SelectedDate="{Binding Record.DateOf}"/>
+
+            <Separator Height="15"/>
+
+            <TextBox Text="{Binding Record.StartTime, Converter={StaticResource TimeSpanConverter}}"
+                 materialDesign:HintAssist.Hint="Start" 
+                 materialDesign:HintAssist.HelperText="Start Time *"/>
+
+            <Separator Height="15"/>
+
+            <TextBox Text="{Binding Record.EndTime, Converter={StaticResource TimeSpanConverter}}"
+                 materialDesign:HintAssist.Hint="End" 
+                 materialDesign:HintAssist.HelperText="End Time *"/>
+
+            <Separator Height="15"/>
+
+            <TextBox Text="{Binding Record.Description}" 
+                     Height="100"
+                     materialDesign:HintAssist.Hint="Insert description" 
+                     materialDesign:HintAssist.HelperText="Description"
+                     AcceptsReturn="True" 
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Top"/>
+
+            <Separator Height="15"/>
+
+            <TextBox Text="{Binding Record.Location}"
+                 materialDesign:HintAssist.Hint="Where?" 
+                 materialDesign:HintAssist.HelperText="Location"/>
+
+            <Separator Height="25"/>
+
+            <Button Content="SAVE" Command="{Binding SaveCommand}"/>
+        </StackPanel>
+    </Border>
+</Window>

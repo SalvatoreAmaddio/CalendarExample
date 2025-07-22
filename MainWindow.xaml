@@ -1,0 +1,27 @@
+﻿<Window x:Class="CalendarExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalendarExample"
+        xmlns:calendar="clr-namespace:CalendarControl;assembly=CalendarControl" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:CalendarViewModel}"
+        xmlns:viewmodels="clr-namespace:CalendarExample.ViewModels" 
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <calendar:Calendar x:Name="calendar" 
+                           Date="{Binding Date, Mode=TwoWay}"
+                           Events="{Binding Events, Mode=TwoWay}"
+                           IsWeekView="{Binding IsWeekView, Mode=TwoWay}"
+                           Culture="{x:Static local:Cultures.US}"
+                           DeleteCommand="{Binding DeleteCommand}"
+                           SelectedEventCommand="{Binding SelectedEventCommand}"
+                           AddEventCommand="{Binding AddEventCommand}"
+                           EventDropCommand="{Binding EventDropCommand}"
+                           IsLoading="{Binding IsLoading}"
+                           />
+    </Grid>
+</Window>
