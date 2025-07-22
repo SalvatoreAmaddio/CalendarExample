@@ -1,6 +1,6 @@
 ﻿# 📅 CalendarExample
 
-This WPF project demonstrates how to use the [`CalendarControl`](https://www.nuget.org/packages/CalendarControl) — a flexible, Material Design-based calendar component supporting **month** and **week views**, event management, and drag-and-drop functionality.
+This WPF project demonstrates how to use the [`CalendarControl`](https://github.com/SalvatoreAmaddio/CalendarControl) — a flexible, Material Design-based calendar component supporting **month** and **week views**, event management, and drag-and-drop functionality.
 
 ---
 
