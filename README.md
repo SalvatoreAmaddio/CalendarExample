@@ -121,6 +121,29 @@ For instance in your ViewModel you could have:
     }
 ```
 
+## Explaining The SelectedEvent Command
+In the CalendarControl the SelectedEventCommand is invoked when the user clicks on calendar event.
+The command should implement a logic to open a new Window so that the user can edit the details of the event. 
+For instance in your ViewModel you could have:
+```csharp
+
+    public ICommand SelectedEventCommand => new AsyncRelayCommand<IDatable?>(SelectedEventAsync);
+
+    private async Task SelectedEventAsync(IDatable? datable)
+    {
+        if (datable is null)
+            return;
+
+        //fetch the full event, you might want to also fetch other joining tables if you are using EF
+        EventModel? eventModel = await DatabaseManager.GetByIdAsync(datable.Id);
+
+        if (eventModel is not null)
+        {
+            OpenView?.Invoke(this, eventModel);
+        }
+    }
+```
+
 ## Explaining The Delete Command
 In the CalendarControl the DeleteCommand is invoked when the user wants to delete an event.
 The command should implement a logic to remove the event from the Database and also from the Calendar Control. 
