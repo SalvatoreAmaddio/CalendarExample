@@ -77,7 +77,9 @@ Example of ViewModel can be found in the [`ViewModels`](https://github.com/Salva
 folder.
 
 ## Explaining The EventDrop Command
-In the CalendarControl the EventDropCommand is invoked after an event record 
+In both views, the user can drag and drop events from one day to another. 
+However, the even should be updated into the database. 
+In the CalendarControl the EventDropCommand is invoked after a calendar event 
 has been moved via drag-and-drop. It receives an updated IDatable object. 
 The control has already modified the DateOf, StartTime, and EndTime properties, 
 and the command is responsible for saving the updated data. For example in your ViewModel:
