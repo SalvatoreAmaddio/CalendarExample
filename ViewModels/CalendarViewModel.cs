@@ -81,14 +81,14 @@ public class CalendarViewModel : AbstractViewModel
         {
             eventModel.DateOf = date;
         }
-        else if (obj is PlaceholderEvent pEvent)
+        else if (obj is PlaceholderEvent pEvent) //this occurs in weekview when clicking on an empty slot.
         {
             eventModel.DateOf = pEvent.DateOf;
             eventModel.StartTime = pEvent.StartTime;
             eventModel.EndTime = pEvent.EndTime;
         }
 
-        OpenView?.Invoke(this, eventModel);
+        OpenView?.Invoke(this, eventModel); //helper event to open a Window from the UI.
     }
 
 
@@ -105,7 +105,7 @@ public class CalendarViewModel : AbstractViewModel
         {
             deleted = await DatabaseManager.DeleteAsync(datable.Id);
             Events.Remove(datable);
-            Events = [.. Events];
+            Events = [.. Events]; //this is necessary to refresh the UI
             OnPropertyChanged(nameof(Events));
         }
 

@@ -93,3 +93,59 @@ and the command is responsible for saving the updated data. For example in your 
         }
     }
 ```
+
+## Explaining The AddEvent Command
+In the CalendarControl the AddEventCommand is invoked when the user wants to add a new calendar event.
+The command should implement a logic to open a new Window so that the user can add the new event. 
+For instance in your ViewModel you could have:
+```csharp
+
+    public ICommand AddEventCommand => new RelayCommand<object?>(AddEvent);
+
+    private void AddEvent(object? obj)
+    {
+        EventModel eventModel = new();
+
+        if (obj is DateTime date) //this occurs when adding event from MonthView when clicking on a DayCard object
+        {
+            eventModel.DateOf = date;
+        }
+        else if (obj is PlaceholderEvent pEvent) //this occurs when adding event from WeekView when clicking on an empty slot.
+        {
+            eventModel.DateOf = pEvent.DateOf;
+            eventModel.StartTime = pEvent.StartTime;
+            eventModel.EndTime = pEvent.EndTime;
+        }
+
+        OpenView?.Invoke(this, eventModel); //helper event to open a Window from the UI.
+    }
+```
+
+## Explaining The Delete Command
+In the CalendarControl the DeleteCommand is invoked when the user wants to delete an event.
+The command should implement a logic to remove the event from the Database and also from the Calendar Control. 
+For instance in your ViewModel you could have:
+```csharp
+
+    public ICommand DeleteCommand => new AsyncRelayCommand<IDatable>(DeleteAsync);
+
+    private async Task<bool> DeleteAsync(IDatable? datable)
+    {
+        bool deleted = false;
+
+        MessageBoxResult answer = MessageBox.Show("Are you sure you want to delete this event?", "Wait!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+        if (answer == MessageBoxResult.No)
+            return deleted;
+
+        if (datable is not null)
+        {
+            deleted = await DatabaseManager.DeleteAsync(datable.Id);
+            Events.Remove(datable);
+            Events = [.. Events]; //this is necessary to refresh the UI
+            OnPropertyChanged(nameof(Events));
+        }
+
+        return deleted;
+    }
+```
